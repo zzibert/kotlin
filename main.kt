@@ -1,18 +1,31 @@
+import java.util.*
+
 fun main(args: Array<String>) {
-    val rectangle = Rectangle(41, 43)
-    println(rectangle.isSquare)
+    println("Hello, ${args[0]}!")
+    feedTheFish()
 }
 
-class Person(
-    val name: String,
+fun feedTheFish() {
+    val day = randomDay()
+    val food = fishFood(day)
+    println ("Today is $day and the fish eat $food")
+}
 
-    var isMarried: Boolean
-)
+fun randomDay(): String {
+    val week = listOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+    return week[Random().nextInt(7)]
+}
 
-class Rectangle(val height: Int, val width: Int){
-    val isSquare: Boolean
-
-    get() {
-        return height == width
+fun fishFood(day: String): String {
+    return when (day) {
+        "Monday" -> "flakes"
+        "Tuesday" -> "pellets"
+        "Wednesday" -> "redworms"
+        "Thursday" -> "granules"
+        "Friday" -> "mosquitos"
+        "Saturday" -> "lettuce"
+        "Sunday" -> "plankton"
+        else -> "nothing"
     }
+
 }
